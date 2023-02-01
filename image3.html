@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   .container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+
+   }
+   .btn{
+    padding:13px;
+    border :2px solid black;
+    background-color: none;
+    color:black;
+    margin-top:30px;
+   }
+   #images{
+    width: 300px;
+   }
+   .btn{
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+   }
+   .btn:hover{
+    color:aliceblue;
+    background-color: black;
+    
+   }
+  </style>
+</head>
+<body>
+  <div class="container">
+       <img src="d1.png" id="images">
+       <button class="btn" onclick="dice()">roll the dice</button>
+       <br>
+       <p class="score" style="font-size:2rem;"></p>
+  </div>
+<script>
+    let score = document.querySelector('.score');
+    let CountButtonHomeClicks = 0;
+    let dicenum=0;
+    let hey=false;
+  function dice(e){
+    
+      CountButtonHomeClicks += 1;
+      // console.log(CountButtonHomeClicks)
+      var num=Math.floor(Math.random()*6)+1;
+        if(CountButtonHomeClicks < 4){
+          dicenum +=num;
+          score.innerHTML =dicenum;
+          // console.log(dicenum);
+        }
+       document.getElementById("images").setAttribute("src" , "d" + num +".png");
+       
+
+      if(  CountButtonHomeClicks < 4 && dicenum > 9){
+       hey=true;
+       
+       }
+       
+        if(hey == true || CountButtonHomeClicks > 4){
+        img2();
+       }
+
+        function img2(){
+        window.location.href = "/index.html";
+        }
+       
+  }
+                
+  
+
+</script>
+</body>
+</html>
